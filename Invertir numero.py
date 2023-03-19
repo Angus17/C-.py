@@ -1,3 +1,4 @@
+#Este programa invierte los dígitos de un número de 4 dígitos
 
 c=True
 
