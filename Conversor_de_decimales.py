@@ -33,5 +33,5 @@ while op!='d' and op!='D':#Prototipos de un Do{}While
             a = n % 16
             n //= 16
             b = str(a)
-            HexD =str( b+HexD )
+            HexD =str( b + HexD )
         print("El numero en hexadecimal es de:", HexD)
