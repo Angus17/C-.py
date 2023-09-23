@@ -109,4 +109,5 @@ while 1:
                 
             '''
         case 5:
+            print("Hola")
             break
