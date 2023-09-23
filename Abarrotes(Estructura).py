@@ -90,8 +90,6 @@ def mostrar_historial():
 
 import os
 
-lista_completa = []
-
 while 1:
     while 1:
         
@@ -106,7 +104,7 @@ while 1:
         case 1:
             capturar_ventas()
         case 2:
-            if len(lista_completa) != 0:
+            if len(lista) != 0:
                 buscar_recibo_compras(lista)
             else:
                 print("Verifica la disponibilidad de clientes. . .")
