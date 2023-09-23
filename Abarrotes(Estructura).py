@@ -71,12 +71,15 @@ def capturar_ventas():
         os.system("cls")
 
 
-'''
 def buscar_recibo_compras(Lista_total):
-    
-    for x in range(len(Lista_total)):
-        
-        
+    while 1:
+        buscar = int(input("Ingresa el numero de folio del recibo: "))
+        for x in range(len(lista_total)):
+            for y in lista_total.keys("Folio"):
+                if buscar in lista_total[x][y]:
+                    print(lista_total[x][y])
+                    break
+'''
 
 def realizar_corte():
 
@@ -86,6 +89,8 @@ def mostrar_historial():
 
 
 import os
+
+lista_completa = []
 
 while 1:
     while 1:
@@ -101,7 +106,10 @@ while 1:
         case 1:
             capturar_ventas()
         case 2:
-            #buscar_recibo_compras(lista)
+            if len(lista_completa) != 0:
+                buscar_recibo_compras(lista)
+            else:
+                print("Verifica la disponibilidad de clientes. . .")
             '''
             case 3:
                 
