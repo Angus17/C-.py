@@ -1,0 +1,54 @@
+[
+	{
+
+	'Folio': 1, 
+	'Articulos': [
+			{
+			'Nombre': 'Carlos V',
+ 			'Cantidad': 1,
+ 			'Precio_Unitario': 3.0
+			},
+
+	 		{
+			'Nombre': 'Jamon',
+ 			'Cantidad': 3,
+ 			'Precio_Unitario': 20.0
+			}, 
+
+			{
+			'Nombre': 'Camisa',
+	 		'Cantidad': 1,
+ 			'Precio_Unitario': 30.0
+			}
+		    ],
+ 	'IVA': 0.16,
+ 	'Subtotal': 93.0,
+	'PRECIO_TOTAL 	(IVA incluido)': 107.88
+	},
+ 
+	{
+	'Folio': 2,
+ 	'Articulos': [
+			{
+			'Nombre': 'Corn pops',
+ 			'Cantidad': 1,
+ 			'Precio_Unitario': 20.99
+			},
+
+			{
+			'Nombre': 'Vive 100',
+			'Cantidad': 1,
+			'Precio_Unitario': 20.0
+			},
+
+			{
+			'Nombre': 'Four loko', 
+			'Cantidad': 2, 
+			'Precio_Unitario': 17.0
+			}
+		     ],
+ 	'IVA': 0.16,
+ 	'Subtotal': 75.0, 
+ 	'PRECIO_TOTAL (IVA incluido)': 87
+	}
+]
