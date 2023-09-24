@@ -105,7 +105,9 @@ def realizar_corte(lista_total):
     print(f"Se recibio un total de {len(lista_total)} clientes!\n")
     for x in range(len(lista_total)):
         suma += lista_total[x]["PRECIO_TOTAL (IVA incluido)"]
-    print(f"La tienda recaudo un total de ${suma} ")
+    print(f"La tienda recaudo un total de ${suma}\n")
+    os.system("pause")
+    os.system("cls")
 
 
 def mostrar_historial(lista_total):
