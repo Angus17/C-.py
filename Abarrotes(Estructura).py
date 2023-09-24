@@ -7,31 +7,31 @@ def capturar_ventas(i):
         try:
             lista.append(dict())
             lista[i]["Folio"] = i + 1
-            lista[i]["Articulos"] = []
-            lista[i]["Articulos"].append(dict())
+            lista[i]["Artículos"] = []
+            lista[i]["Artículos"].append(dict())
             existencia = True
             while existencia:
                 print(f"Cliente #{i + 1}", f"Producto {j + 1}\n", sep = "      ")
-                lista[i]["Articulos"][j]["Nombre"] = input("Ingresa el nombre del articulo: ")
+                lista[i]["Artículos"][j]["Nombre"] = input("Ingresa el nombre del artículo: ")
                 while 1:
-                    lista[i]["Articulos"][j]["Cantidad"] = int(input("Cuantos articulos compro: "))
-                    if lista[i]["Articulos"][j]["Cantidad"] > 0:
+                    lista[i]["Artículos"][j]["Cantidad"] = int(input("Cuántos artículos compró: "))
+                    if lista[i]["Artículos"][j]["Cantidad"] > 0:
                         break
                     else:
                         print("Ingresa datos correctos. . .")
                 while 1:
-                    lista[i]["Articulos"][j]["Precio_Unitario"] = float(input("Ingresa el precio por unidad: "))
-                    if lista[i]["Articulos"][j]["Precio_Unitario"] > 0.0:
+                    lista[i]["Artículos"][j]["Precio_Unitario"] = float(input("Ingresa el precio por unidad: "))
+                    if lista[i]["Artículos"][j]["Precio_Unitario"] > 0.0:
                         break
                     else:
                         print("Ingresa datos correctos. . .")
-                subtotal += round((lista[i]["Articulos"][j]["Precio_Unitario"] * lista[i]["Articulos"][j]["Cantidad"]), 2)
+                subtotal += round((lista[i]["Artículos"][j]["Precio_Unitario"] * lista[i]["Artículos"][j]["Cantidad"]), 2)
                 while 1:
-                    continuar = input("El cliente  compro mas poductos?\nEscribe:\nSi\nNo\n: ")
+                    continuar = input("El cliente  compró más poductos?\nEscribe: Si/No\n: ")
                     if continuar.lower() == "si":
                         os.system("pause")
                         os.system("cls")
-                        lista[i]["Articulos"].append(dict())
+                        lista[i]["Artículos"].append(dict())
                         j += 1 #Contador de productos
                         break
                     elif continuar.lower() == "no":
@@ -39,7 +39,7 @@ def capturar_ventas(i):
                         os.system("cls")
                         lista[i]["IVA"] = 0.16
                         lista[i]["Subtotal"] = round(subtotal,2)
-                        lista[i]["PRECIO_TOTAL (IVA incluido)"] = round(subtotal + (lista[i]["Subtotal"] * lista[i]["IVA"]), 2)
+                        lista[i]["PRECIO_TOTAL (IVA incluído)"] = round(subtotal + (lista[i]["Subtotal"] * lista[i]["IVA"]), 2)
                         while 1:
                             existencia_clientes = input("Existen mas clientes?\nEscribe: Si/No\n: ")
                             if existencia_clientes.lower() == "si":
@@ -66,9 +66,10 @@ def capturar_ventas(i):
                         print("Ingresa una respuesta correcta. . .")
                         
         except ValueError:
-            print("Debes ingresar un Valor adecuado")
+            print("Debes ingresar un Valor adecuado. . .")
         except TypeError:
-            print("Debes ingresar un Tipo de dato correcto")
+            print("Verifica que los parámetros sean compatibles. . .")
+            exit()
     os.system("cls")
     return lista, i
 
@@ -78,7 +79,7 @@ def buscar_recibo_compras(lista_total):
     
     while 1:
         try:
-            buscar = int(input("Ingresa el numero de folio del recibo: "))
+            buscar = int(input("Ingresa el número de folio del recibo: "))
             for x in range(len(lista_total)):
                 if buscar == lista_total[x]["Folio"]:
                     bandera = True
@@ -92,20 +93,22 @@ def buscar_recibo_compras(lista_total):
                 break
             else:
                 os.system("cls")
-                print("No existe ningun recibo con el presente folio. . .")
+                print("No existe ningún recibo con el presente folio. . .")
+                os.system("pause")
+                os.system("cls")
                 return
         except ValueError:
             print("Ingresa un dato correcto por favor. . .")
         except TypeError:
-            print("Verifica que los parametros sean compatibles. . .")
+            print("Verifica que los parámetros sean compatibles. . .")
             exit()
 
 def realizar_corte(lista_total):
     suma = 0
-    print(f"Se recibio un total de {len(lista_total)} clientes!\n")
+    print(f"¡Se recibió un total de {len(lista_total)} clientes!\n")
     for x in range(len(lista_total)):
-        suma += lista_total[x]["PRECIO_TOTAL (IVA incluido)"]
-    print(f"La tienda recaudo un total de ${suma}\n")
+        suma += lista_total[x]["PRECIO_TOTAL (IVA incluído)"]
+    print(f"La tienda recaudó un total de ${round(suma,2)}\n")
     os.system("pause")
     os.system("cls")
 
@@ -127,13 +130,13 @@ i = 0
 while 1:
     try:
         while 1:
-            opcion = int(input("*****MENU DE ABARROTES*****\n1.Captuar ventas "
-                            "\n2.Buscar recibo de compra\n3.Reailizar corte de caja\n"
-                            "4.Mostrar historial de ventas\n5.Salir\nSelecciona una opcion: "))
+            opcion = int(input("*****MENÚ DE ABARROTES*****\n1.Captuar ventas "
+                            "\n2.Buscar recibo de compra\n3.Realizar corte de caja\n"
+                            "4.Mostrar historial de ventas\n5.Salir\nSelecciona una opción: "))
             if 1 <= opcion <= 5:
                 break
             else:
-                print("Ingresa una opcion correcta. . .")
+                print("Ingresa una opción correcta. . .")
                 os.system("pause")
                 os.system("cls") 
         match opcion:
@@ -164,13 +167,13 @@ while 1:
                     mostrar_historial(lista)
                 else:
                     os.system('cls')
-                    print("Verifica la disponibilidad de clientes. . .")
+                    print("No se han recibido clientes aún. . .")
                     os.system("pause")
                     os.system('cls')
             case 5:
                 break
     except ValueError:
         os.system("cls")
-        print("Ingresa un dato valido y sin ausencia de valor. . .")
+        print("Ingresa un dato válido y sin ausencia de valor. . .")
         os.system("pause")
         os.system("cls")
