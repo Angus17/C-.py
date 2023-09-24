@@ -15,11 +15,11 @@ def desechar_recibos_en_ceros(lista):
     return lista, len(lista)
 
 def eliminar_productos(articulos, subtotal_nuevo):
-    bandera = False
     eliminar = True
     
 
     while eliminar and len(articulos) != 0:
+        bandera = False
         print(f"{articulos}\n")
         nombre_articulo = input("Escribe el nombre del articulo a eliminar: ")
         for x in range(len(articulos)):
@@ -104,7 +104,7 @@ def capturar_ventas(i):
                                 print("Ingresa datos correctos. . .")
                                 os.system("pause")
                                 os.system("cls")
-                        lista[i]["IVA"] = subtotal * 0.16
+                        lista[i]["IVA"] = round(subtotal * 0.16, 2)
                         lista[i]["Subtotal"] = round(subtotal,2)
                         lista[i]["PRECIO_TOTAL (IVA incluído)"] = round(subtotal + lista[i]["IVA"], 2)
                         while 1:
