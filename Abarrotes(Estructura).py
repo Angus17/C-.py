@@ -50,6 +50,8 @@ def capturar_ventas():
                                 i += 1 #Contador de clientes
                                 break
                             elif existencia_clientes.lower() == "no":
+                                os.system("pause")
+                                os.system("cls")
                                 existencia_clientes = False
                                 break
                             else:
@@ -81,12 +83,14 @@ def buscar_recibo_compras(lista_total):
                 if buscar == lista_total[x]["Folio"]:
                     bandera = True
                     print("Recibo encontrado!. . .\n")
-                    os.system("pause")
                     print(lista_total[x])
+                    os.system("pause")
+                    os.system("cls")
                     break
             if bandera:
                 break
             else:
+                os.system("cls")
                 print("No existe ningun recibo con el presente folio. . .")
         except ValueError:
             print("Ingresa un dato correcto por favor. . .")
@@ -138,6 +142,7 @@ while 1:
                     
             case 3:
                 if len(lista) != 0:
+                    os.system('cls')
                     realizar_corte(lista)
                 else:
                     os.system('cls')
@@ -147,6 +152,7 @@ while 1:
                 
             case 4:
                 if len(lista) != 0:
+                    os.system('cls')
                     mostrar_historial(lista)
                 else:
                     os.system('cls')
