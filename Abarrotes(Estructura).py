@@ -27,7 +27,7 @@ def capturar_ventas():
                         break
                     else:
                         print("Ingresa datos correctos. . .")
-                subtotal += round(lista[i]["Articulos"][j]["Precio_Unitario"] * lista[i]["Articulos"][j]["Cantidad"], 2)
+                subtotal += round((lista[i]["Articulos"][j]["Precio_Unitario"] * lista[i]["Articulos"][j]["Cantidad"]), 2)
                 while 1:
                     continuar = input("El cliente  compro mas poductos?\nEscribe:\nSi\nNo\n: ")
                     if continuar.lower() == "si":
@@ -40,7 +40,7 @@ def capturar_ventas():
                         os.system("pause")
                         os.system("cls")
                         lista[i]["IVA"] = 0.16
-                        lista[i]["Subtotal"] = subtotal
+                        lista[i]["Subtotal"] = round(subtotal,2)
                         lista[i]["PRECIO_TOTAL (IVA incluido)"] = round(subtotal + (lista[i]["Subtotal"] * lista[i]["IVA"]), 2)
                         while 1:
                             existencia_clientes = input("Existen mas clientes?\nEscribe: Si/No\n: ")
@@ -113,6 +113,9 @@ def realizar_corte(lista_total):
 def mostrar_historial(lista_total):
     for x in lista_total:
         print(f"{x}\n")
+        
+    os.system("pause")
+    os.system("cls")
 
 
 
