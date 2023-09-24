@@ -171,6 +171,8 @@ while 1:
                     os.system("pause")
                     os.system('cls')
             case 5:
+                os.system("cls")
+                print("Finalizando programa. . .")
                 break
     except ValueError:
         os.system("cls")
