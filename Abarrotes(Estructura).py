@@ -27,7 +27,7 @@ def capturar_ventas():
                         break
                     else:
                         print("Ingresa datos correctos. . .")
-                subtotal += lista[i]["Articulos"][j]["Precio_Unitario"] * lista[i]["Articulos"][j]["Cantidad"] 
+                subtotal += round(lista[i]["Articulos"][j]["Precio_Unitario"] * lista[i]["Articulos"][j]["Cantidad"], 2)
                 while 1:
                     continuar = input("El cliente  compro mas poductos?\nEscribe:\nSi\nNo\n: ")
                     if continuar.lower() == "si":
@@ -45,6 +45,8 @@ def capturar_ventas():
                         while 1:
                             existencia_clientes = input("Existen mas clientes?\nEscribe: Si/No\n: ")
                             if existencia_clientes.lower() == "si":
+                                os.system("pause")
+                                os.system("cls")
                                 j = 0
                                 subtotal = 0
                                 i += 1 #Contador de clientes
@@ -68,7 +70,6 @@ def capturar_ventas():
             print("Debes ingresar un Valor adecuado")
         except TypeError:
             print("Debes ingresar un Tipo de dato correcto")
-    os.system("pause")
     os.system("cls")
     return lista
 
@@ -82,6 +83,7 @@ def buscar_recibo_compras(lista_total):
             for x in range(len(lista_total)):
                 if buscar == lista_total[x]["Folio"]:
                     bandera = True
+                    os.system('cls')
                     print("Recibo encontrado!. . .\n")
                     print(lista_total[x])
                     os.system("pause")
@@ -134,6 +136,7 @@ while 1:
                 lista = capturar_ventas()
             case 2:
                 if len(lista) != 0:
+                    os.system('cls')
                     buscar_recibo_compras(lista)
                 else:
                     os.system('cls')
@@ -158,6 +161,7 @@ while 1:
                     os.system('cls')
                     print("Verifica la disponibilidad de clientes. . .")
                     os.system("pause")
+                    os.system('cls')
             case 5:
                 break
     except ValueError:
