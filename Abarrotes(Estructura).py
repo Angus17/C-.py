@@ -1,11 +1,8 @@
 def desechar_recibos_en_ceros(lista):
     x = 0
-    folios_eliminados = 0
-    
     while len(lista) != 0 and x < len(lista):
         if len(lista[x]["Artículos"]) == 0:
             lista.pop(x)
-            folios_eliminados += 1
         else:
             x += 1
 
