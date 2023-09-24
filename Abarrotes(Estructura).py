@@ -142,7 +142,7 @@ while 1:
                     os.system('cls')
                     print("Verifica la disponibilidad de clientes. . .")
                     os.system("pause")
-                    
+                    os.system('cls')
             case 3:
                 if len(lista) != 0:
                     os.system('cls')
@@ -151,8 +151,7 @@ while 1:
                     os.system('cls')
                     print("Verifica la disponibilidad de clientes. . .")
                     os.system("pause")
-                    
-                
+                    os.system('cls')
             case 4:
                 if len(lista) != 0:
                     os.system('cls')
