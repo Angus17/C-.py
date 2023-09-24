@@ -1,19 +1,17 @@
-def capturar_ventas():
-    global lista
-    lista = []
-    i = 0
-    j = 0
+def capturar_ventas(i):
     subtotal = 0
+    j = 0
     existencia_clientes = True
     
     while existencia_clientes:
-        lista.append(dict())
         try:
+            lista.append(dict())
             lista[i]["Folio"] = i + 1
             lista[i]["Articulos"] = []
             lista[i]["Articulos"].append(dict())
             existencia = True
             while existencia:
+                print(f"Cliente #{i + 1}")
                 lista[i]["Articulos"][j]["Nombre"] = input("Ingresa el nombre del articulo: ")
                 while 1:
                     lista[i]["Articulos"][j]["Cantidad"] = int(input("Cuantos articulos compro: "))
@@ -49,12 +47,13 @@ def capturar_ventas():
                                 os.system("cls")
                                 j = 0
                                 subtotal = 0
-                                i += 1 #Contador de clientes
+                                i += 1 #Contador de clientes nuevos
                                 break
                             elif existencia_clientes.lower() == "no":
                                 os.system("pause")
                                 os.system("cls")
                                 existencia_clientes = False
+                                i += 1 #Se suma 1 cliente mas por si se selecciona de nuevo la funcion en el menu
                                 break
                             else:
                                 os.system("cls")
@@ -71,7 +70,7 @@ def capturar_ventas():
         except TypeError:
             print("Debes ingresar un Tipo de dato correcto")
     os.system("cls")
-    return lista
+    return lista, i
 
 
 def buscar_recibo_compras(lista_total):
@@ -122,6 +121,7 @@ def mostrar_historial(lista_total):
 import os
 
 lista = []
+i = 0
 
 while 1:
     try:
@@ -138,7 +138,7 @@ while 1:
         match opcion:
             case 1:
                 os.system('cls')
-                lista = capturar_ventas()
+                lista, i = capturar_ventas(i)
             case 2:
                 if len(lista) != 0:
                     os.system('cls')
