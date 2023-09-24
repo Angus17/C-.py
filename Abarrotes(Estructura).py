@@ -11,7 +11,7 @@ def capturar_ventas(i):
             lista[i]["Articulos"].append(dict())
             existencia = True
             while existencia:
-                print(f"Cliente #{i + 1}")
+                print(f"Cliente #{i + 1}", f"Producto {j + 1}\n", sep = "      ")
                 lista[i]["Articulos"][j]["Nombre"] = input("Ingresa el nombre del articulo: ")
                 while 1:
                     lista[i]["Articulos"][j]["Cantidad"] = int(input("Cuantos articulos compro: "))
@@ -93,6 +93,7 @@ def buscar_recibo_compras(lista_total):
             else:
                 os.system("cls")
                 print("No existe ningun recibo con el presente folio. . .")
+                return
         except ValueError:
             print("Ingresa un dato correcto por favor. . .")
         except TypeError:
