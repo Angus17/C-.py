@@ -1,4 +1,55 @@
+def desechar_recibos_en_ceros(lista):
+    x = 0
+    folios_eliminados = 0
+    
+    while len(lista) != 0 and x < len(lista):
+        if len(lista[x]["Artículos"]) == 0:
+            lista.pop(x)
+            folios_eliminados += 1
+        else:
+            x += 1
+
+    for x in range(len(lista)):
+        lista[x]["Folio"] = x + 1
+
+    return lista, len(lista)
+
+def eliminar_productos(articulos, subtotal_nuevo):
+    bandera = False
+    eliminar = True
+    
+
+    while eliminar and len(articulos) != 0:
+        print(f"{articulos}\n")
+        nombre_articulo = input("Escribe el nombre del articulo a eliminar: ")
+        for x in range(len(articulos)):
+            if nombre_articulo.lower() == articulos[x]["Nombre"].lower():
+                subtotal_nuevo -= articulos[x]["Cantidad"] * articulos[x]["Precio_Unitario"]
+                articulos.pop(x)
+                bandera = True
+                break
+        if bandera:
+            print("Artículo eliminado!")
+            while len(articulos) != 0:
+                respuesta = input("Desea eliminar otro articulo?\nEscribe: Si/No\n: ")
+                if respuesta.lower() in ["si", "no"]:
+                    if respuesta.lower() == "no":
+                        eliminar = False
+                        break
+                    break
+                else:
+                    print("Ingresa datos correctos. . .")
+                    os.system("pause")
+                    os.system("cls")
+        else:
+            print("El artículo no existe. . .")
+            os.system("pause")
+            os.system("cls")
+    return articulos, subtotal_nuevo
+
+
 def capturar_ventas(i):
+    global lista
     subtotal = 0
     j = 0
     existencia_clientes = True
@@ -37,9 +88,25 @@ def capturar_ventas(i):
                     elif continuar.lower() == "no":
                         os.system("pause")
                         os.system("cls")
-                        lista[i]["IVA"] = 0.16
+                        while 1:
+                            modificar = input("El cliente desea regresar(devolver) alguno de los artículos?\n"
+                                                    "Escribe: Si/No\n: ")
+                            if modificar.lower() in ["si","no"]:
+                                if modificar.lower() == "si":
+                                    lista[i]["Artículos"], subtotal = eliminar_productos(lista[i]["Artículos"], subtotal)
+                                    print(f"Lista actualizada!\n")
+                                    print(lista[i]["Artículos"])
+                                    os.system("pause")
+                                    os.system("cls")
+                                    break
+                                break
+                            else:
+                                print("Ingresa datos correctos. . .")
+                                os.system("pause")
+                                os.system("cls")
+                        lista[i]["IVA"] = subtotal * 0.16
                         lista[i]["Subtotal"] = round(subtotal,2)
-                        lista[i]["PRECIO_TOTAL (IVA incluído)"] = round(subtotal + (lista[i]["Subtotal"] * lista[i]["IVA"]), 2)
+                        lista[i]["PRECIO_TOTAL (IVA incluído)"] = round(subtotal + lista[i]["IVA"], 2)
                         while 1:
                             existencia_clientes = input("Existen mas clientes?\nEscribe: Si/No\n: ")
                             if existencia_clientes.lower() == "si":
@@ -53,7 +120,6 @@ def capturar_ventas(i):
                                 os.system("pause")
                                 os.system("cls")
                                 existencia_clientes = False
-                                i += 1 #Se suma 1 cliente mas por si se selecciona de nuevo la funcion en el menu
                                 break
                             else:
                                 os.system("cls")
@@ -63,13 +129,17 @@ def capturar_ventas(i):
                         break
                     else:
                         os.system("cls")
-                        print("Ingresa una respuesta correcta. . .")
-                        
+                        print("Ingresa una respuesta correcta. . .")       
         except ValueError:
-            print("Debes ingresar un Valor adecuado. . .")
+            print("Debes ingresar un valor adecuado. . .")
         except TypeError:
             print("Verifica que los parámetros sean compatibles. . .")
             exit()
+            
+    
+    # Si uno de los n clientes decidió no llevar nada, se desecha el ticket            
+    lista, i = desechar_recibos_en_ceros(lista)
+    
     os.system("cls")
     return lista, i
 

@@ -1,0 +1,14 @@
+x = 0
+    folios_eliminados = 0
+    
+    while len(lista) != 0 and x < len(lista):
+        if len(lista[x]["Artículos"]) == 0:
+            lista.pop(x)
+            if x != 0:
+                folios_eliminados += 1
+            if x != len(lista):
+                for y in range(len(lista)):
+                    lista[y + folios_eliminados]["Folio"] -= 1
+        else:
+            x += 1
+    return lista, len(lista)
