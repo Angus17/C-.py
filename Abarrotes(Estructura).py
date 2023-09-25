@@ -4,15 +4,14 @@ def desechar_recibos_en_ceros(lista):
     for x in indices_vacios:
         lista.pop(x)
         
-    for i, recibo in enumerate(lista): # for indice, valor in enumerate(lista)
-        recibo["Folio"] = i + 1
+    for i, ticket in enumerate(lista): # for indice, valor in enumerate(lista)
+        ticket["Folio"] = i + 1
         
     return lista, len(lista)
 
 def eliminar_productos(articulos, subtotal_nuevo):
     eliminar = True
     
-
     while eliminar and len(articulos) != 0:
         bandera = False
         print(f"{articulos}\n")
