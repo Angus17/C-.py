@@ -1,7 +1,7 @@
 def desechar_recibos_en_ceros(lista):
     indices_vacios = [i for i, ticket in enumerate(lista) if len(ticket["Artículos"]) == 0]
     
-    for x in indices_vacios:
+    for x in sorted(indices_vacios, reverse=True):
         lista.pop(x)
         
     for i, ticket in enumerate(lista): # for indice, valor in enumerate(lista)
