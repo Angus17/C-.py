@@ -1,8 +1,8 @@
 def desechar_recibos_en_ceros(lista):
-    indices_vacios = [i for i, recibo in enumerate(lista) if len(recibo["Artículos"]) == 0]
+    indices_vacios = [i for i, ticket in enumerate(lista) if len(ticket["Artículos"]) == 0]
     
-    for indice in indices_vacios:
-        lista.pop(indice)
+    for x in indices_vacios:
+        lista.pop(x)
         
     for i, recibo in enumerate(lista): # for indice, valor in enumerate(lista)
         recibo["Folio"] = i + 1
