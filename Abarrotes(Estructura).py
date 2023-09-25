@@ -1,14 +1,12 @@
 def desechar_recibos_en_ceros(lista):
-    x = 0
-    while len(lista) != 0 and x < len(lista):
-        if len(lista[x]["Artículos"]) == 0:
-            lista.pop(x)
-        else:
-            x += 1
-
-    for x in range(len(lista)):
-        lista[x]["Folio"] = x + 1
-
+    indices_vacios = [i for i, recibo in enumerate(lista) if len(recibo["Artículos"]) == 0]
+    
+    for indice in indices_vacios:
+        lista.pop(indice)
+        
+    for i, recibo in enumerate(lista): # for indice, valor in enumerate(lista)
+        recibo["Folio"] = i + 1
+        
     return lista, len(lista)
 
 def eliminar_productos(articulos, subtotal_nuevo):
